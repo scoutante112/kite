@@ -434,7 +434,7 @@ type HTTPResponseEnv struct {
 }
 
 func NewHTTPResponseEnv(resp *http.Response) *HTTPResponseEnv {
-	return &HTTPResponseEnv{
+	res := &HTTPResponseEnv{
 		resp: resp,
 
 		Status:     resp.Status,
@@ -447,6 +447,8 @@ func NewHTTPResponseEnv(resp *http.Response) *HTTPResponseEnv {
 			return string(body), nil
 		},
 	}
+
+	return res
 }
 
 func (h HTTPResponseEnv) String() string {
